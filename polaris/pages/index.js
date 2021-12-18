@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Login from '../components/Login';
+import { useMoralis } from "react-moralis";
 
 export default function Home() {
-  const isAuthenticated = false;
+
+  const { isAuthenticated, logout } = useMoralis();
 
   if(!isAuthenticated) return <Login />;
 
@@ -13,6 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Welcome to the MetaVerse</h1>
+      <button onClick={logout}>Log Out</button>
     </div>
   )
 }
